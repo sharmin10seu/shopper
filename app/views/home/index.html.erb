@@ -1,0 +1,15 @@
+<ul class="thumbnail-list">
+  <% 10.times do |i| %>
+    <li>
+      <a href="#" class="">
+        <%= image_tag "product.jpg" %>
+      </a>
+      <h4><%= link_to "Product" , "" %></h4>
+      <div class="product-price">
+        <span class="save">Save: 80%</span>
+        <span class="cut-price">$25</span>
+      </div>
+      <button type="button" class="btn btn-default navbar-btn">$90</button>
+    </li>
+  <% end %>
+</ul>

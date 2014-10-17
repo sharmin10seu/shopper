@@ -1,0 +1,12 @@
+<div class="form-group" >
+  <label class="col-sm-2 control-label" for="product_title"></label>
+  <div class="col-sm-10">
+    <ul>
+      <%  item.errors.full_messages.each do |error| %>
+        <li>
+          <strong style="color: red"><%= error %></strong><br />
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

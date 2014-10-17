@@ -1,0 +1,40 @@
+<%= search_form_for @q, :url => admin_products_url do |f| %>
+
+  <%= f.label :title_cont %>
+  <%= f.search_field :title_cont %>
+
+  <%= f.label :category_title_cont %>
+  <%= f.search_field :category_title_cont %>
+
+  <%= f.label :price_eq %>
+  <%= f.search_field :price_eq %>
+
+  <%= f.submit %>
+<% end %>
+
+<table class="table table-striped">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Discount</th>
+    <th>Quantity</th>
+    <th colspan="2" style="text-align: center">Action</th>
+  </tr>
+  <% @products.each do|product| %>
+    <tr>
+      <td><%= product.title %></td>
+      <td><%= product.description %></td>
+      <td><%= product.price %></td>
+      <td><%= product.discount %></td>
+      <td><%= product.quantity %></td>
+      <td>
+        <%= link_to "Edit", edit_admin_product_path(product), :class => 'btn btn-primary' %>
+      </td>
+      <td>
+        <%= link_to "Delete", admin_product_url(product), :method => :delete, :class => 'btn btn-danger', :confirm => "Are you sure?" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "New Product", new_admin_product_url, :class => "btn btn-primary" %>

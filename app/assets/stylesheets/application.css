@@ -1,0 +1,74 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+.thumbnail-list {
+    /* remove default list styles */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /* remove spaces between li tags*/
+    font-size: 0;
+}
+
+.thumbnail-list li {
+    display: inline-block;
+    vertical-align: top;
+    width: 33.333%;
+    padding: 2%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+.thumbnail-list img {
+    display: block;
+    width: 70%;
+}
+
+.item { background: green}
+.cut-price {
+    display: block;
+    text-decoration:line-through;
+    color: #ccc;}
+.product-price { float: left; display: block; width:100%; color: #999;}
+
+@media (min-width: 350px) and (max-width: 767px) {
+    .thumbnail-list li {width: 50%;}
+}
+@media (max-width: 349px) {
+    .thumbnail-list li {width: 100%;}
+}
+
+
+.normal-price{
+    float: left;
+    width:100%;
+    color: #999;
+}
+.save{
+    float: left;
+    width:100%;
+    color: #999;
+}
+
+.notice,.alert{
+    width: 90%;
+    margin: 10px auto;
+    text-align: center;
+    background: #ECECEC;
+    font-size: 18px;
+    border-radius: 10px !important;
+    padding: 10px;
+}

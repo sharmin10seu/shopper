@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-5 col-md-offset-1">
+    <%= image_tag "product.jpg", :width => "95%" %>
+  </div>
+  <div class="col-md-6">
+    <h2><%= @product.title %></h2>
+    <h4>Category:<%= @product.category.title %> </h4>
+    <div class="row">
+      <div class="col-md-2">Price: <strong><%= @product.discounted_price %></strong> </div>
+      <div class="col-md-3">Discount: <strong>$<%= @product.discount %></strong> </div>
+      <div class="col-md-7">Save: <strong><%= @product.save_in_parcentage.round(2) %>%</strong> </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" style="margin-top: 10px">
+        <strong>Description:</strong>
+        <%= @product.description %>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 15px">
+      <div class="col-md-8">
+        <form class="form-inline" role="form">
+          <div class="input-group">
+            <div class="input-group-addon">Qty</div>
+            <input type="text" placeholder="Quantity" />
+          </div>
+          <div class="form-group">
+            <input type="submit" class="form-control btn btn-success" value="Add To Cart">
+          </div>
+        </form>
+      </div>
+      <div class="col-md-4">
+        <%= link_to "Back", products_path, :class => "btn btn-default" %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="row" style="margin-top: 20px">
+  <h1>Similar Products</h1>
+  <ul class="thumbnail-list">
+    <% @product.similar_products.each do |product| %>
+      <li>
+        <a href="#" class="">
+          <%= image_tag "product.jpg" %>
+        </a>
+        <h4><%= link_to product.title , product_path(product) %></h4>
+        <div class="product-price">
+          <span class="save">Save: <%= product.save_in_parcentage.round(2) %>%</span>
+          <span class="cut-price">$<%= product.price %></span>
+        </div>
+        <button type="button" class="btn btn-default navbar-btn">$<%= product.discounted_price %></button>
+      </li>
+    <% end %>
+  </ul>
+</div>

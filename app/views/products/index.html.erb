@@ -1,0 +1,29 @@
+<ul class="thumbnail-list">
+  <% @products.each do |product| %>
+    <li>
+      <a href="#" class="">
+        <%= image_tag "product.jpg" %>
+      </a>
+      <h4><%= link_to product.title , product_path(product) %></h4>
+      <div class="product-price">
+        <span class="save">Save:<%= product.save_in_parcentage.round(2) %> %</span>
+        <span class="cut-price"><%= product.price %></span>
+      </div>
+      <button type="button" class="btn btn-default navbar-btn">$<%= product.discounted_price %></button>
+      <%= form_for CartItem.new do |f| %>
+
+        <p>
+          <%= f.hidden_field :product_id, :value => product.id %>
+          <%= f.hidden_field :quantity, :value => 1 %>
+        </p>
+        <p>
+          <% if current_user.my_cart.cart_items.map(&:product_id).include?(product.id) %>
+            <strong>Added</strong>
+          <% else %>
+            <%= f.submit "Add to Cart", :class =>"btn btn-primary" %>
+          <% end %>
+        </p>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

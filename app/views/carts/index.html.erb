@@ -1,0 +1,51 @@
+<h1>My Cart</h1>
+
+<div class="row">
+  <div class="col-md-4">
+    <%= image_tag "shopping-cart-big.jpg", :style => "width: 80%;height: 70%" %>
+  </div>
+  <div class="col-md-8">
+    <table class="table table-striped">
+
+      <tr>
+        <th width="10%">Qty</th>
+        <th width="50%">Item</th>
+        <th width="15%">Unit Price</th>
+        <th width="25%">Price</th>
+        <th>&nbsp;</th>
+      </tr>
+
+      <% @cart_items.each do|cart_item| %>
+        <tr>
+          <%= form_for cart_item do |f| %>
+           <td width="10%"> <%= f.text_field :quantity, :value => cart_item.quantity, :style =>"width: 95%" %></td>
+          <% end %>
+            <td width="50%"><%= Product.find(cart_item.product_id).title %></td>
+          <td width="15%"><%= Product.find(cart_item.product_id).price %></td>
+            <td width="25%">$<%= (Product.find(cart_item.product_id).price)*(cart_item.quantity.to_i) %></td>
+            <td>
+              <%= link_to "Delete", cart_item_url(cart_item), :method => :delete, :class => 'btn btn-danger', :confirm => "Are you sure?" %>
+            </td>
+
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="2">
+
+        </td>
+        <td align="right">
+          <strong>Total: </strong>
+        </td>
+        <td>
+          <strong><%= @cart.total_price %></strong>
+        </td>
+        <td>
+        <%= form_for @cart do |f| %>
+            <%= f.submit "Order", :class =>"btn btn-primary" %>
+        <% end %>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+</div>
