@@ -5,6 +5,7 @@ Shopper::Application.routes.draw do
   namespace :admin do
     resources :products
     resources :categories
+    resources :carts
   end
   resources :cart_items
   resources :carts

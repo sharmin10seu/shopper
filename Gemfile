@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'devise'
 gem "letter_opener", :group => :development
 gem 'ransack'
+gem 'therubyracer'
 
 
 # Gems used only for assets and not required

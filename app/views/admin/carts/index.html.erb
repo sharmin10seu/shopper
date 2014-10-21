@@ -1,0 +1,20 @@
+<table class="table table-striped">
+  <tr>
+    <th>Email</th>
+    <th>Created_at</th>
+    <th>Status</th>
+  </tr>
+  <% @carts.each do|cart| %>
+      <tr>
+        <td><%= User.find(cart.user_id).email %></td>
+        <td><%= User.find(cart.user_id).created_at %></td>
+        <td>
+          <%= form_for cart do |f| %>
+              <%= f.collection_select :status,[["ORDERED","ORDERED"], ["PAID","PAID"]], :first, :last, {}, {} %>
+          <% end %>
+        </td>
+
+      </tr>
+  <% end %>
+</table>
+<%= link_to "lll", new_admin_cart_url, :class => "btn btn-primary" %>
